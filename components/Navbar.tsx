@@ -1,4 +1,5 @@
 import { auth, signOut, signIn } from "@/auth";
+import { ModeToggle } from "@/components/ui/mode-toggle";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -42,6 +43,9 @@ const Navbar = async () => {
 							<button type="submit">Login</button>
 						</form>
 					)}
+					<div>
+						<ModeToggle />
+					</div>
 				</div>
 			</nav>
 		</div>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { ThemeProvider } from "../components/theme-provider";
 
 const workSans = localFont({
 	src: [
@@ -34,7 +35,7 @@ const workSans = localFont({
 			weight: "400",
 			style: "normal",
 		},
-	
+
 		{
 			path: "./fonts/WorkSans-Thin.ttf",
 			weight: "200",
@@ -60,11 +61,18 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="en" suppressHydrationWarning>
 			<body
 				className={`${workSans.variable} ${workSans.variable} antialiased`}
 			>
-				{children}
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="system"
+					enableSystem
+					disableTransitionOnChange
+				>
+					{children}
+				</ThemeProvider>
 			</body>
 		</html>
 	);
